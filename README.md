@@ -6,14 +6,14 @@
   <h1>🚀 OAuth V2 is now live</h1>
   <p>Granular token limits · Refresh-token rotation · Wallet transactions · Advanced stats · Full monitoring</p>
 
-[![API Version](https://img.shields.io/badge/OAuth_API-v2.1.0-4f46e5)](https://openapi.com/en/docs/oauth)
+[![API Version](https://img.shields.io/badge/OAuth-v2.1.0-4f46e5)](https://openapi.com/en/docs/oauth)
 [![License](https://img.shields.io/github/license/openapi/get-started-with-oauth-v2)](LICENSE)
 [![Sandbox](https://img.shields.io/badge/sandbox-free-22c55e)](https://test.oauth.openapi.com)
 <br>
 [![Linux Foundation Member](https://img.shields.io/badge/Linux%20Foundation-Silver%20Member-003778?logo=linux-foundation&logoColor=white)](https://www.linuxfoundation.org/about/members)
 <br>
 
-**[Read the docs →](https://openapi.com/en/docs/oauth)**
+**[Read the docs →](https://console.openapi.com/apis/oauthv2/info)**
 
 </div>
 
