@@ -1,22 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source "$(dirname "$0")/99-openapi.sh"
 
-ask() {
-  local var="$1" prompt="$2" secret="${3:-}"
-  [[ -n "${!var:-}" ]] && return
-  if [[ -n "$secret" ]]; then
-    read -rsp "$prompt: " "$var"; echo
-  else
-    read -rp  "$prompt: " "$var"
-  fi
-}
-
-ask OPENAPI_EMAIL   "Email"
-ask OPENAPI_KEY     "API key" secret
-ask ALLOWED_IP      "Allowed IP for this token (e.g. 203.0.113.10)"
-
-BASE="${OPENAPI_BASE_URL:-https://oauth.openapi.com}"
-JQ=$(command -v jq || echo cat)
+ask OPENAPI_EMAIL "Email"
+ask OPENAPI_KEY   "API key" secret
+ask ALLOWED_IP    "Allowed IP for this token (e.g. 203.0.113.10)"
 
 echo "Creating token with limits..."
 

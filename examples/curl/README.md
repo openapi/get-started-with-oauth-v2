@@ -1,222 +1,210 @@
-# OAuth V2 — cURL examples
+# cURL examples
 
-Set your credentials once, then run any snippet below.
+Ready-to-run shell scripts for every endpoint of the Openapi OAuth V2 API.
+Each script prompts for credentials interactively if the environment variables are not set.
+
+## Prerequisites
+
+- `curl`
+- `jq` _(optional — output is pretty-printed if available, raw JSON otherwise)_
+
+## Run an example
+
+```bash
+git clone https://github.com/openapi/get-started-with-oauth-v2.git
+cd get-started-with-oauth-v2/examples/curl
+bash 00-tokens-create.sh
+```
+
+You can also export your credentials once to skip the prompts across all scripts:
 
 ```bash
 export OPENAPI_EMAIL="your@email.com"
 export OPENAPI_KEY="your-api-key"
 ```
 
-All examples target the **production** base URL `https://oauth.openapi.com`.
-Swap it for `https://test.oauth.openapi.com` to use the Sandbox at no cost.
+To target the **Sandbox** instead of production (free, no charges):
+
+```bash
+export OPENAPI_BASE_URL="https://test.oauth.openapi.com"
+```
 
 ---
 
 ## Tokens
 
-### Create a token
+### 00 — Create a token
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  -X POST https://oauth.openapi.com/tokens \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "my-first-token",
-    "scopes": ["GET:company.openapi.com/IT-start"],
-    "ttl": 2592000
-  }' | jq .
+bash 00-tokens-create.sh
 ```
 
-### Create a token with limits
+[View source →](00-tokens-create.sh)
+
+### 01 — Create a token with limits
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  -X POST https://oauth.openapi.com/tokens \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "limited-token",
-    "scopes": ["GET:company.openapi.com/IT-start"],
-    "ttl": 86400,
-    "limits": {
-      "totalRequests": 1000,
-      "walletAmount": 5.00,
-      "ip": ["203.0.113.10"]
-    }
-  }' | jq .
+bash 01-tokens-create-limits.sh
 ```
 
-### List tokens
+[View source →](01-tokens-create-limits.sh)
+
+### 02 — List tokens
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/tokens | jq .
+bash 02-tokens-list.sh
 ```
 
-### Get a token by ID
+[View source →](02-tokens-list.sh)
+
+### 03 — Get token by ID
 
 ```bash
-TOKEN_ID="your-token-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/tokens/$TOKEN_ID | jq .
+bash 03-tokens-get.sh
 ```
 
-### Update a token (add scopes, extend TTL)
+[View source →](03-tokens-get.sh)
+
+### 04 — Update a token
 
 ```bash
-TOKEN_ID="your-token-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  -X PATCH https://oauth.openapi.com/tokens/$TOKEN_ID \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "updated-token",
-    "ttl": 604800,
-    "scopes": ["GET:company.openapi.com/IT-start", "GET:company.openapi.com/IT-advanced"]
-  }' | jq .
+bash 04-tokens-update.sh
 ```
 
-### Rotate a token with refresh token
+[View source →](04-tokens-update.sh)
+
+### 05 — Rotate a token (refresh-token flow)
 
 ```bash
-REFRESH_TOKEN="your-refresh-token"
-TOKEN_ID="your-token-id"
-
-curl -s \
-  -X PATCH https://oauth.openapi.com/tokens/$TOKEN_ID \
-  -H "Authorization: Bearer $REFRESH_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{}' | jq .
+bash 05-tokens-rotate.sh
 ```
 
-### Delete a token
+[View source →](05-tokens-rotate.sh)
+
+### 06 — Delete a token
 
 ```bash
-TOKEN_ID="your-token-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  -X DELETE https://oauth.openapi.com/tokens/$TOKEN_ID | jq .
+bash 06-tokens-delete.sh
 ```
+
+[View source →](06-tokens-delete.sh)
 
 ---
 
 ## Scopes
 
-### List available scopes
+### 07 — List available scopes
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/scopes | jq .
+bash 07-scopes-list.sh
 ```
 
-### Get scope detail by ID
+[View source →](07-scopes-list.sh)
+
+### 08 — Get scope by ID
 
 ```bash
-SCOPE_ID="your-scope-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/scopes/$SCOPE_ID | jq .
+bash 08-scopes-get.sh
 ```
+
+[View source →](08-scopes-get.sh)
 
 ---
 
 ## Stats
 
-### Overall usage stats
+### 09 — Overall usage stats
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/stats | jq .
+bash 09-stats-overview.sh
 ```
 
-### Stats filtered by date
+[View source →](09-stats-overview.sh)
+
+### 10 — Unique IP list
 
 ```bash
-# Accepts: YYYY  |  YYYY-MM  |  YYYY-MM-DD
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/stats?date=2026-04" | jq .
+bash 10-stats-ips.sh
 ```
 
-### List unique IP addresses
+[View source →](10-stats-ips.sh)
+
+### 11 — Stats grouped by API domain
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/stats/ips?date=2026-04" | jq .
+bash 11-stats-apis.sh
 ```
 
-### Stats grouped by API domain
+[View source →](11-stats-apis.sh)
+
+### 12 — Stats for a specific domain
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/stats/apis | jq .
+bash 12-stats-domain.sh
 ```
 
-### Stats for a specific domain
-
-```bash
-DOMAIN="company.openapi.com"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/stats/apis/$DOMAIN" | jq .
-```
+[View source →](12-stats-domain.sh)
 
 ---
 
 ## Wallet
 
-### Get wallet balance
+### 13 — Wallet balance
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/wallet | jq .
+bash 13-wallet-balance.sh
 ```
 
-### List wallet transactions
+[View source →](13-wallet-balance.sh)
+
+### 14 — Wallet transactions
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/wallet/transactions?limit=20&skip=0" | jq .
+bash 14-wallet-transactions.sh
 ```
+
+[View source →](14-wallet-transactions.sh)
 
 ---
 
 ## Monitoring
 
-### List error logs
+### 15 — Error logs
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/errors?limit=10" | jq .
+bash 15-errors-list.sh
 ```
 
-### List callbacks
+[View source →](15-errors-list.sh)
+
+### 16 — List callbacks
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  "https://oauth.openapi.com/callbacks?limit=10" | jq .
+bash 16-callbacks-list.sh
 ```
 
-### Get callback detail by ID
+[View source →](16-callbacks-list.sh)
+
+### 17 — Get callback by ID
 
 ```bash
-CALLBACK_ID="your-callback-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/callbacks/$CALLBACK_ID | jq .
+bash 17-callbacks-get.sh
 ```
 
-### List subscriptions
+[View source →](17-callbacks-get.sh)
+
+### 18 — List subscriptions
 
 ```bash
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/subscriptions | jq .
+bash 18-subscriptions-list.sh
 ```
 
-### Get subscription detail by ID
+[View source →](18-subscriptions-list.sh)
+
+### 19 — Get subscription by ID
 
 ```bash
-SUB_ID="your-subscription-id"
-
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  https://oauth.openapi.com/subscriptions/$SUB_ID | jq .
+bash 19-subscriptions-get.sh
 ```
+
+[View source →](19-subscriptions-get.sh)

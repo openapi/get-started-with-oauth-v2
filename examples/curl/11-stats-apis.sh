@@ -13,18 +13,18 @@ ask() {
 
 ask OPENAPI_EMAIL "Email"
 ask OPENAPI_KEY   "API key" secret
-ask TOKEN_ID      "Token ID to update"
 
 BASE="${OPENAPI_BASE_URL:-https://oauth.openapi.com}"
 JQ=$(command -v jq || echo cat)
 
-echo "Updating token $TOKEN_ID..."
+read -rp "Filter by date? Leave blank for all time (YYYY | YYYY-MM | YYYY-MM-DD): " DATE
 
-curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
-  -X PATCH "$BASE/tokens/$TOKEN_ID" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "updated-token",
-    "ttl": 604800,
-    "scopes": ["GET:company.openapi.com/IT-start", "GET:company.openapi.com/IT-advanced"]
-  }' | $JQ
+if [[ -n "$DATE" ]]; then
+  URL="$BASE/stats/apis?date=$DATE"
+else
+  URL="$BASE/stats/apis"
+fi
+
+echo "Getting stats grouped by API domain..."
+
+curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" "$URL" | $JQ
