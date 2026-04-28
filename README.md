@@ -21,9 +21,7 @@
 
 # 🔐 OAuth V2 — Get Started
 
-> Code examples for the new <a href="https://openapi.com/en/docs/oauth">Openapi® OAuth V2 API</a> — tokens, stats, wallet, monitoring and more</h4>
-
-A curated collection of code examples showing how to use the **Openapi OAuth V2 API** — from creating your first token to inspecting usage stats across every language you work in.
+A curated collection of ready-to-run examples for the **[Openapi OAuth V2 API](https://openapi.com/en/docs/oauth)** — pick your language, set your credentials, and go.
 
 ## What's new in V2?
 
@@ -66,12 +64,6 @@ The only exception is token refresh: pass the refresh token as a **Bearer** toke
 1. Generate a token from the [Openapi console](https://console.openapi.com/oauth) or via API.
 2. Pick the examples folder for your language.
 3. Copy the snippet, set your credentials, run it.
-
----
-
-[openapi.com](https://openapi.com) · [Support](https://openapi.com/en/support) · [Terms](https://openapi.com/en/terms-and-conditions)
-
----
 
 ## Contributing
 
