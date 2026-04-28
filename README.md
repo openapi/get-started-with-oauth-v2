@@ -23,8 +23,6 @@
 
 > Code examples for the new <a href="https://openapi.com/en/docs/oauth">Openapi® OAuth V2 API</a> — tokens, stats, wallet, monitoring and more</h4>
 
----
-
 A curated collection of code examples showing how to use the **Openapi OAuth V2 API** — from creating your first token to inspecting usage stats across every language you work in.
 
 ## What's new in V2?
