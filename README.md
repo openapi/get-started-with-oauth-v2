@@ -11,14 +11,13 @@
 [![Sandbox](https://img.shields.io/badge/sandbox-free-22c55e)](https://test.oauth.openapi.com)
 <br>
 [![Linux Foundation Member](https://img.shields.io/badge/Linux%20Foundation-Silver%20Member-003778?logo=linux-foundation&logoColor=white)](https://www.linuxfoundation.org/about/members)
+<br>
 
-  <br>
-
-
-  **[<h3>Read the docs →</h3>](https://openapi.com/en/docs/oauth)**
+**[Read the docs →](https://openapi.com/en/docs/oauth)**
 
 </div>
 
+---
 
 # 🔐 OAuth V2 — Get Started
 
