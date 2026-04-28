@@ -21,7 +21,7 @@
 
 # 🔐 OAuth V2 — Get Started
 
-A curated collection of ready-to-run examples for the **[Openapi OAuth V2 API](https://openapi.com/en/docs/oauth)** — pick your language, set your credentials, and go.
+A curated collection of ready-to-run examples for the **[Openapi OAuth V2 API](https://console.openapi.com/apis/oauthv2/info)** — pick your language, set your credentials, and go.
 
 ## What's new in V2?
 
@@ -35,11 +35,10 @@ A curated collection of ready-to-run examples for the **[Openapi OAuth V2 API](h
 
 | Resource | Link |
 |---|---|
-| Getting started guide | [openapi.com/en/docs/oauth](https://openapi.com/en/docs/oauth) |
-| API Reference (Swagger UI) | [oauth.openapi.com](https://oauth.openapi.com) |
-| Sandbox environment | [test.oauth.openapi.com](https://test.oauth.openapi.com) |
-| Postman collection | [openapi.com/en/docs/oauth#postman](https://openapi.com/en/docs/oauth#postman) |
-| OAS3 specification | [openapi.com/en/docs/oauth#oas3](https://openapi.com/en/docs/oauth#oas3) |
+| Getting started guide | [console.openapi.com/apis/oauthv2](https://console.openapi.com/apis/oauthv2/info) |
+| API Reference (Swagger UI) | [console.openapi.com/apis/oauthv2/documentation](https://console.openapi.com/apis/oauthv2/documentation#docs-swaggerui) |
+| Postman collection | [openapi.com/en/docs/oauth#postman](https://console.openapi.com/apis/oauthv2/documentation) |
+| OAS3 specification | [openapi.com/en/docs/oauth#oas3](https://console.openapi.com/apis/oauthv2/documentation) |
 
 ## Examples
 
