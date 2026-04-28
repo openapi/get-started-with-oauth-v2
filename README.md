@@ -6,9 +6,9 @@
   <h1>🚀 OAuth V2 is now live</h1>
   <p>Granular token limits · Refresh-token rotation · Wallet transactions · Advanced stats · Full monitoring</p>
 
-[![API Version](https://img.shields.io/badge/OAuth-v2.1.0-4f46e5)](https://openapi.com/en/docs/oauth)
+[![API Version](https://img.shields.io/badge/OAuth-v2.1.0-4f46e5)](https://console.openapi.com/apis/oauthv2/info)
 [![License](https://img.shields.io/github/license/openapi/get-started-with-oauth-v2)](LICENSE)
-[![Sandbox](https://img.shields.io/badge/sandbox-free-22c55e)](https://test.oauth.openapi.com)
+[![Sandbox](https://img.shields.io/badge/sandbox-free-22c55e)](https://console.openapi.com/support#heading_3779)
 <br>
 [![Linux Foundation Member](https://img.shields.io/badge/Linux%20Foundation-Silver%20Member-003778?logo=linux-foundation&logoColor=white)](https://www.linuxfoundation.org/about/members)
 <br>
@@ -71,7 +71,7 @@ The only exception is token refresh: pass the refresh token as a **Bearer** toke
 
 [openapi.com](https://openapi.com) · [Support](https://openapi.com/en/support) · [Terms](https://openapi.com/en/terms-and-conditions)
 
-
+---
 
 ## Contributing
 
@@ -83,7 +83,6 @@ See [docs/contributing.md](docs/contributing.md) for detailed instructions on ho
 
 Meet the project authors:
 
-- L. Paderi ([@lpaderiAltravia](https://www.github.com/lpaderiAltravia))
 - Openapi Team ([@openapi-it](https://github.com/openapi-it))
 
 ## Partners
