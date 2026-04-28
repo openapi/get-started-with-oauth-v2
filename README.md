@@ -3,8 +3,8 @@
     <img alt="Openapi OAuth V2" src=".github/assets/images/repo-header-a4.png">
   </a>
 
-  <h1>🔐 OAuth V2 — Get Started</h1>
-  <h4>Code examples for the new <a href="https://openapi.com/en/docs/oauth">Openapi® OAuth V2 API</a> — tokens, stats, wallet, monitoring and more</h4>
+  <h1>🚀 OAuth V2 is now live</h1>
+  <p>Granular token limits · Refresh-token rotation · Wallet transactions · Advanced stats · Full monitoring</p>
 
 [![API Version](https://img.shields.io/badge/OAuth_API-v2.1.0-4f46e5)](https://openapi.com/en/docs/oauth)
 [![License](https://img.shields.io/github/license/openapi/get-started-with-oauth-v2)](LICENSE)
@@ -14,12 +14,15 @@
 
   <br>
 
-  <h1>🚀 OAuth V2 is now live</h1>
-  <p>Granular token limits · Refresh-token rotation · Wallet transactions · Advanced stats · Full monitoring</p>
 
-  **[Read the docs →](https://openapi.com/en/docs/oauth)**
+  **[<h3>Read the docs →</h3>](https://openapi.com/en/docs/oauth)**
 
 </div>
+
+
+# 🔐 OAuth V2 — Get Started
+
+> Code examples for the new <a href="https://openapi.com/en/docs/oauth">Openapi® OAuth V2 API</a> — tokens, stats, wallet, monitoring and more</h4>
 
 ---
 
