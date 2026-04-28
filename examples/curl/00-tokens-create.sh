@@ -12,6 +12,6 @@ curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "my-first-token",
-    "scopes": ["GET:company.openapi.com/IT-start"],
+    "scopes": ["GET:company.openapi.it/IT-start"],
     "ttl": 2592000
   }' | $JQ

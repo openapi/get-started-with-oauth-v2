@@ -1,33 +1,24 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-ask() {
-  local var="$1" prompt="$2" secret="${3:-}"
-  [[ -n "${!var:-}" ]] && return
-  if [[ -n "$secret" ]]; then
-    read -rsp "$prompt: " "$var"; echo
-  else
-    read -rp  "$prompt: " "$var"
-  fi
-}
+#!/bin/sh
+set -eu
+. "$(dirname "$0")/99-openapi.sh"
 
 ask OPENAPI_EMAIL "Email"
 ask OPENAPI_KEY   "API key" secret
 
-BASE="${OPENAPI_BASE_URL:-https://oauth.openapi.com}"
-JQ=$(command -v jq || echo cat)
-
-read -rp "How many errors to return? [default: 10] " LIMIT
+printf 'How many errors to return? [default: 10] '
+read -r LIMIT
 LIMIT="${LIMIT:-10}"
 
-read -rp "Skip (for pagination)? [default: 0] " SKIP
+printf 'Skip (for pagination)? [default: 0] '
+read -r SKIP
 SKIP="${SKIP:-0}"
 
-read -rp "Filter by scopes (comma-separated, leave blank for all): " SCOPES
+printf 'Filter by scopes (comma-separated, leave blank for all): '
+read -r SCOPES
 
 URL="$BASE/errors?limit=$LIMIT&skip=$SKIP"
-[[ -n "$SCOPES" ]] && URL="$URL&scopes=$SCOPES"
+[ -n "$SCOPES" ] && URL="$URL&scopes=$SCOPES"
 
-echo "Getting error logs..."
+printf 'Getting error logs...\n'
 
 curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" "$URL" | $JQ

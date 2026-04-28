@@ -1,30 +1,19 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-ask() {
-  local var="$1" prompt="$2" secret="${3:-}"
-  [[ -n "${!var:-}" ]] && return
-  if [[ -n "$secret" ]]; then
-    read -rsp "$prompt: " "$var"; echo
-  else
-    read -rp  "$prompt: " "$var"
-  fi
-}
+#!/bin/sh
+set -eu
+. "$(dirname "$0")/99-openapi.sh"
 
 ask OPENAPI_EMAIL "Email"
 ask OPENAPI_KEY   "API key" secret
 
-BASE="${OPENAPI_BASE_URL:-https://oauth.openapi.com}"
-JQ=$(command -v jq || echo cat)
+printf 'Date filter (YYYY | YYYY-MM | YYYY-MM-DD), leave blank for all time: '
+read -r DATE
 
-read -rp "Filter by date? Leave blank for all time (YYYY | YYYY-MM | YYYY-MM-DD): " DATE
-
-if [[ -n "$DATE" ]]; then
+if [ -n "$DATE" ]; then
   URL="$BASE/stats/ips?date=$DATE"
 else
   URL="$BASE/stats/ips"
 fi
 
-echo "Getting unique IP list..."
+printf 'Getting unique IP list...\n'
 
 curl -s -u "$OPENAPI_EMAIL:$OPENAPI_KEY" "$URL" | $JQ
